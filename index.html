@@ -4,75 +4,112 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
-      background-color: #f6f5fa;
-    }
-    .content {
-      background-color: white;
-      margin: 40px auto;
-      max-width: 400px;
-      padding: 40px;
-      box-shadow: 0 10px 20px black;
-      border-radius: 20px;
-      font-family: "Nerko One", cursive;
-      font-weight: 400;
-      font-style: normal;
-    }
-    
-    .search {
-      width: 250px;
-      height: 30px;
-      background-color: #F6F5FA;
-      border-style: none;
-      border-radius: 5px;
-    
-    }
-    .submit {
-      width: 80px;
-      height: 30px;
-      font-family: "Nerko One", cursive;
-      font-weight: 400;
-      font-style: normal;
-      background-color: #7C52EE;
-      border-style: none;
-      border-radius: 5px;
-    }
-    
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+        background-color: #f6f5fa;
+      }
+      a{
+        color: #eede52;
+      }
+     
+      
+      .content {
+        background-color: white;
+        margin: 40px auto;
+        max-width: 400px;
+        padding: 40px;
+        box-shadow: 0 10px 20px black;
+        border-radius: 20px;
+        font-family: "Nerko One", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+        background: url(weather.jpg);
+        background-size: 500px;
+      }
 
+      .search {
+        width: 250px;
+        height: 30px;
+        background-color: #f6f5fa;
+        border-style: none;
+        border-radius: 5px;
+        padding-left: 10px;
+      }
+      .submit {
+        width: 80px;
+        height: 30px;
+        font-family: "Nerko One", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #7c52ee;
+        color: white;
+        border-style: none;
+        border-radius: 5px;
+      }
+     
+      .city-weather{
+        display: flex;
+        justify-content: space-between;
+       
+    
+      }
+      
+      .weather-temp{
+        margin-top: 15px;
+        font-size: 30px;
+      }
+      .city{
+        margin-top: 0;
+        font-size: 30px;
+        
+      }
+      .description{
+        margin: 0;
+      }
+      
+      
+    </style>
+    
   </head>
   <body>
     <div class="content">
       <div class="header">
         <header>
           <form>
-            <input type="search" class="search" placeholder="Enter a city..." required />
+            <input
+              type="search"
+              class="search"
+              placeholder="Enter a city..."
+              required
+            />
             <input type="submit" class="submit" value="Search" />
           </form>
         </header>
       </div>
 
       <main>
-        <div class="city"><h1>Paris</h1></div>
-        <div class="emoji"><h2>⛅</h2></div>
-        <div class="current-temp"><h2>12°C</h2></div>
+        <div class="city-weather">
+          <div class="city"><h1>Paris</h1></div>
+          <div class="weather-temp"><h2>⛅13°C</h2></div>
+        </div>
         <div class="description">
           <p>
-            Tuesday 14:49
-            <br />
-            scattered Clouds
-            <br />
+            Tuesday 14:49,
+            scattered Clouds,
             humidity 66%, Wind 3.13 km/h
           </p>
         </div>
       </main>
       <br />
       <br />
-      <br />
+  
       <div class="footer">
         <footer>
           This app is coded by
@@ -87,7 +124,6 @@
           and hosted on <a href="https://myweather0210.netlify.app/">Netlify</a>
         </footer>
       </div>
-      
     </div>
   </body>
 </html>
