@@ -14,11 +14,10 @@
       body {
         background-color: #f6f5fa;
       }
-      a{
+      a {
         color: #eede52;
       }
-     
-      
+
       .content {
         background-color: white;
         margin: 40px auto;
@@ -53,40 +52,49 @@
         border-style: none;
         border-radius: 5px;
       }
-     
-      .city-weather{
+
+      .city-weather {
         display: flex;
         justify-content: space-between;
-       
-    
+        margin-top: 50px;
       }
-      
-      .weather-temp{
-        margin-top: 15px;
+
+      .current-temp-info {
+        display: flex;
+      }
+      .weather-temp {
+        font-size: 40px;
+      }
+      .weather-temp-icon {
+        margin-top: 55px;
+        margin-left: 40px;
+      }
+      .temp-unit {
+        margin-top: 40px;
+      }
+
+      .current-city {
         font-size: 30px;
       }
-      .city{
-        margin-top: 0;
-        font-size: 30px;
-        
-      }
-      .description{
+      .description {
         margin: 0;
       }
-      
-      
+
+      span {
+        color: red;
+      }
     </style>
-    
   </head>
   <body>
     <div class="content">
       <div class="header">
         <header>
-          <form>
+          <form id="search-form">
             <input
               type="search"
               class="search"
               placeholder="Enter a city..."
+              id="search-form-input"
               required
             />
             <input type="submit" class="submit" value="Search" />
@@ -96,20 +104,23 @@
 
       <main>
         <div class="city-weather">
-          <div class="city"><h1>Paris</h1></div>
-          <div class="weather-temp"><h2>⛅13°C</h2></div>
+          <div class="current-city" id="city"><h1>Paris</h1></div>
+          <div class="current-temp-info">
+            <div class="weather-temp-icon"><h2>⛅</h2></div>
+            <div class="weather-temp"><h2>13</h2></div>
+            <div class="temp-unit"><h2>°C</h2></div>
+          </div>
         </div>
         <div class="description">
           <p>
-            Tuesday 14:49,
-            scattered Clouds,
-            humidity 66%, Wind 3.13 km/h
+            Tuesday 14:49, scattered Clouds, humidity <span>66%</span> , Wind
+            <span>3.13 km/h</span>
           </p>
         </div>
       </main>
       <br />
       <br />
-  
+
       <div class="footer">
         <footer>
           This app is coded by
@@ -125,5 +136,15 @@
         </footer>
       </div>
     </div>
+    <script>
+      function searchSubmit(event) {
+        event.preventDefault();
+        let searchInput = document.querySelector("#search-form-input");
+        let cityElement = document.querySelector("#city");
+        cityElement.innerHTML = searchInput.value;
+      }
+      let searchFormElement = document.querySelector("#search-form");
+      searchFormElement.addEventListener("submit", searchSubmit);
+    </script>
   </body>
 </html>
