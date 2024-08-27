@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Yaka</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>">
     <style>
       body {
         background-color: #f6f5fa;
@@ -104,10 +105,10 @@
 
       <main>
         <div class="city-weather">
-          <div class="current-city" id="city"><h1>Paris</h1></div>
+          <div class="current-city" id="city"><h1></h1></div>
           <div class="current-temp-info">
             <div class="weather-temp-icon"><h2>⛅</h2></div>
-            <div class="weather-temp"><h2>13</h2></div>
+            <div class="weather-temp" id="temperature"><h2></h2></div>
             <div class="temp-unit"><h2>°C</h2></div>
           </div>
         </div>
@@ -145,6 +146,8 @@
       }
       let searchFormElement = document.querySelector("#search-form");
       searchFormElement.addEventListener("submit", searchSubmit);
+    
+    
     </script>
   </body>
 </html>
