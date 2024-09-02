@@ -30,8 +30,8 @@
         font-family: "Nerko One", cursive;
         font-weight: 400;
         font-style: normal;
-        color: white;
-        background: url(https://images.unsplash.com/photo-1710609942195-b9dab8f48fc6?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        color: black;
+        background: url(view-3d-cloud_23-2151113470.avif);
         background-size: 500px;
       }
 
@@ -68,8 +68,15 @@
         margin-top: 60px;
       }
       .weather-temp-icon {
-        margin-top: 55px;
+        margin-top: 50px;
         margin-left: 40px;
+        width: 70px;
+      }
+     
+      .icon{
+        margin-top: 50px;
+        margin-left: 40px;
+        width: 70px;
       }
       .temp-unit {
         margin-top: 40px;
@@ -85,6 +92,9 @@
 
       span {
         color: red;
+      }
+      .time {
+        color: black;
       }
     </style>
   </head>
@@ -109,15 +119,18 @@
         <div class="city-weather">
           <div class="current-city" id="city"><h1></h1></div>
           <div class="current-temp-info">
-            <div class="weather-temp-icon"><h2>⛅</h2></div>
+            <div id="icon" class="icon">
+              
+            </div>
             <div class="weather-temp" id="temperature"><h2></h2></div>
             <div class="temp-unit"><h2>°C</h2></div>
           </div>
         </div>
         <div class="description">
           <p>
-            <span id="time"></span>, <span id="weather-description"></span>,
-            humidity <span id="humidity"></span> , Wind
+            <span id="time" class="time"></span>,
+            <span id="weather-description"></span>, humidity
+            <span id="humidity"></span> , Wind
             <span id="wind"></span>
           </p>
         </div>
@@ -142,6 +155,7 @@
     </div>
     <script>
       function refreshWeather(response) {
+        console.log(response.data);
         let temperatureElement = document.querySelector("#temperature");
         let temperature = response.data.temperature.current;
         let descriptionElement = document.querySelector("#weather-description");
@@ -149,7 +163,9 @@
         let windSpeed = document.querySelector("#wind");
         let timeElement = document.querySelector("#time");
         let date = new Date(response.data.time * 1000);
-
+        let iconElement= document.querySelector("#icon");
+console.log(response.data)
+        iconElement.innerHTML=`<img src="${response.data.condition.icon_url}" class="icon"/>`;
         timeElement.innerHTML = formatDate(date);
         windSpeed.innerHTML = `${response.data.wind.speed} km/hr`;
         humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
@@ -157,7 +173,6 @@
         descriptionElement.innerHTML = response.data.condition.description;
       }
       function formatDate(date) {
-  
         let minutes = date.getMinutes();
         let hours = date.getHours();
         let days = [
