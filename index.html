@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
     <style>
       body {
         background-color: #f6f5fa;
@@ -57,7 +58,6 @@
       .city-weather {
         display: flex;
         justify-content: space-between;
-        margin-top: 50px;
       }
 
       .current-temp-info {
@@ -65,6 +65,7 @@
       }
       .weather-temp {
         font-size: 40px;
+        margin-top: 60px;
       }
       .weather-temp-icon {
         margin-top: 55px;
@@ -76,6 +77,7 @@
 
       .current-city {
         font-size: 30px;
+        margin-top: 60px;
       }
       .description {
         margin: 0;
@@ -114,8 +116,9 @@
         </div>
         <div class="description">
           <p>
-            Tuesday 14:49, scattered Clouds, humidity <span>66%</span> , Wind
-            <span>3.13 km/h</span>
+            <span id="time"></span>, <span id="weather-description"></span>,
+            humidity <span id="humidity"></span> , Wind
+            <span id="wind"></span>
           </p>
         </div>
       </main>
@@ -138,16 +141,56 @@
       </div>
     </div>
     <script>
+      function refreshWeather(response) {
+        let temperatureElement = document.querySelector("#temperature");
+        let temperature = response.data.temperature.current;
+        let descriptionElement = document.querySelector("#weather-description");
+        let humidityElement = document.querySelector("#humidity");
+        let windSpeed = document.querySelector("#wind");
+        let timeElement = document.querySelector("#time");
+        let date = new Date(response.data.time * 1000);
+
+        timeElement.innerHTML = formatDate(date);
+        windSpeed.innerHTML = `${response.data.wind.speed} km/hr`;
+        humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
+        temperatureElement.innerHTML = Math.round(temperature);
+        descriptionElement.innerHTML = response.data.condition.description;
+      }
+      function formatDate(date) {
+  
+        let minutes = date.getMinutes();
+        let hours = date.getHours();
+        let days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let day = days[date.getDay()];
+        if (minutes < 10) {
+          minutes = `0 ${minutes}`;
+        }
+
+        return `${day} ${hours}:${minutes}`;
+      }
+      function searchCity(city) {
+        let apiKey = "bacodabffe100ecf22f2d099t74223bc";
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+        axios.get(apiUrl).then(refreshWeather);
+      }
       function searchSubmit(event) {
         event.preventDefault();
         let searchInput = document.querySelector("#search-form-input");
         let cityElement = document.querySelector("#city");
         cityElement.innerHTML = searchInput.value;
+
+        searchCity(searchInput.value);
       }
       let searchFormElement = document.querySelector("#search-form");
       searchFormElement.addEventListener("submit", searchSubmit);
-    
-    
     </script>
   </body>
 </html>
