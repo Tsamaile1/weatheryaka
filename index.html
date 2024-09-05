@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Yaka</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
     <style>
@@ -27,7 +24,7 @@
         padding: 40px;
         box-shadow: 0 10px 20px black;
         border-radius: 20px;
-        font-family: "Nerko One", cursive;
+        font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-style: normal;
         color: black;
@@ -67,11 +64,7 @@
         font-size: 40px;
         margin-top: 60px;
       }
-      .weather-temp-icon {
-        margin-top: 50px;
-        margin-left: 40px;
-        width: 70px;
-      }
+      
      
       .icon{
         margin-top: 50px;
@@ -96,6 +89,33 @@
       .time {
         color: black;
       }
+      .forecast-date{
+        text-align: center;
+        color: black;
+        font-size: 12px;
+        line-height: 20px;
+      }
+      .forecast-icon{
+        font-size: 18px;
+        text-align: center;
+      }
+      .forecast-temp{
+        text-align: center;
+        font-size: 12px;
+        padding: 10px;
+        color: red;
+      }
+      .forecast-temperatures{
+        display: flex;
+        text-align: center;
+      }
+      .weather-forecast{
+        display: flex;
+        justify-content: space-between;
+      }
+      footer{
+        font-size: 10px;
+      }
     </style>
   </head>
   <body>
@@ -119,13 +139,11 @@
         <div class="city-weather">
           <div class="current-city" id="city"><h1></h1></div>
           <div class="current-temp-info">
-            <div id="icon" class="icon">
-              
+            <div id="icon" class="icon"></div>
+              <div class="weather-temp" id="temperature"><h2></h2></div>
+              <div class="temp-unit"><h2>°C</h2></div>
             </div>
-            <div class="weather-temp" id="temperature"><h2></h2></div>
-            <div class="temp-unit"><h2>°C</h2></div>
           </div>
-        </div>
         <div class="description">
           <p>
             <span id="time" class="time"></span>,
@@ -137,7 +155,40 @@
       </main>
       <br />
       <br />
-
+    <div class="weather-forecast">
+      <div class="forecast-day">
+        <div class="forecast-date">Mon</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      <div class="forecast-day">
+        <div class="forecast-date">Tue</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      <div class="forecast-day">
+        <div class="forecast-date">Wed</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      <div class="forecast-day">
+        <div class="forecast-date">Thur</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      <div class="forecast-day">
+        <div class="forecast-date">Fri</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      <div class="forecast-day">
+        <div class="forecast-date">Sat</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+    </div>
+    <br>
+    <br>
       <div class="footer">
         <footer>
           This app is coded by
