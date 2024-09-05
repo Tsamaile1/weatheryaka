@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Yaka</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
     <style>
@@ -64,9 +67,8 @@
         font-size: 40px;
         margin-top: 60px;
       }
-      
-     
-      .icon{
+
+      .icon {
         margin-top: 50px;
         margin-left: 40px;
         width: 70px;
@@ -89,31 +91,31 @@
       .time {
         color: black;
       }
-      .forecast-date{
+      .forecast-date {
         text-align: center;
         color: black;
         font-size: 12px;
         line-height: 20px;
       }
-      .forecast-icon{
+      .forecast-icon {
         font-size: 18px;
         text-align: center;
       }
-      .forecast-temp{
+      .forecast-temp {
         text-align: center;
         font-size: 12px;
         padding: 10px;
         color: red;
       }
-      .forecast-temperatures{
+      .forecast-temperatures {
         display: flex;
         text-align: center;
       }
-      .weather-forecast{
+      .weather-forecast {
         display: flex;
         justify-content: space-between;
       }
-      footer{
+      footer {
         font-size: 10px;
       }
     </style>
@@ -140,55 +142,24 @@
           <div class="current-city" id="city"><h1></h1></div>
           <div class="current-temp-info">
             <div id="icon" class="icon"></div>
-              <div class="weather-temp" id="temperature"><h2></h2></div>
-              <div class="temp-unit"><h2>°C</h2></div>
-            </div>
+            <div class="weather-temp" id="temperature"><h2></h2></div>
+            <div class="temp-unit"><h2>°C</h2></div>
           </div>
+        </div>
         <div class="description">
           <p>
-            <span id="time" class="time"></span>,
-            <span id="weather-description"></span>, humidity
-            <span id="humidity"></span> , Wind
+            <span id="time" class="time"></span>
+            <span id="weather-description"></span> humidity
+            <span id="humidity"></span>  Wind
             <span id="wind"></span>
           </p>
         </div>
       </main>
       <br />
       <br />
-    <div class="weather-forecast">
-      <div class="forecast-day">
-        <div class="forecast-date">Mon</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-date">Tue</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-date">Wed</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-date">Thur</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-date">Fri</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-date">Sat</div>
-        <div class="forecast-icon">🌧</div>
-        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
-      </div>
-    </div>
-    <br>
-    <br>
+      <div class="weather-forecast" id="forecast"></div>
+      <br />
+      <br />
       <div class="footer">
         <footer>
           This app is coded by
@@ -214,9 +185,9 @@
         let windSpeed = document.querySelector("#wind");
         let timeElement = document.querySelector("#time");
         let date = new Date(response.data.time * 1000);
-        let iconElement= document.querySelector("#icon");
-console.log(response.data)
-        iconElement.innerHTML=`<img src="${response.data.condition.icon_url}" class="icon"/>`;
+        let iconElement = document.querySelector("#icon");
+        console.log(response.data);
+        iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon"/>`;
         timeElement.innerHTML = formatDate(date);
         windSpeed.innerHTML = `${response.data.wind.speed} km/hr`;
         humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
@@ -257,6 +228,25 @@ console.log(response.data)
       }
       let searchFormElement = document.querySelector("#search-form");
       searchFormElement.addEventListener("submit", searchSubmit);
+
+      function displayForecast() {
+        let days = ["Tues", "Wed", "Thur", "Fri", "Sat"];
+        let forecastHTML = "";
+        days.forEach(function (day) {
+          forecastHTML =
+            forecastHTML +
+            `<div class="forecast-day">
+        <div class="forecast-date">${day}</div>
+        <div class="forecast-icon">🌧</div>
+        <div class="forecast-temp"><div class="forecast-temperature"><strong>19°</strong></div> <div class="forecast-temperature">9°</div></div>
+      </div>
+      `;
+        });
+
+        let forecastElement = document.querySelector("#forecast");
+        forecastElement.innerHTML = forecastHTML;
+      }
+      displayForecast()
     </script>
   </body>
 </html>
